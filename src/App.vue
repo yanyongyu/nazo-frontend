@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:48:16
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-21 10:38:16
+ * @LastEditTime   : 2020-04-25 15:01:30
  * @Description    : Main Frame
  * @GitHub         : https://github.com/yanyongyu
  -->
@@ -79,6 +79,23 @@
         <router-view></router-view>
       </v-slide-x-transition>
     </v-content>
+
+    <v-footer app absolute color="transparent" padless>
+      <v-container class="pa-0">
+        <v-row align="center" justify="center">
+          <v-col class="text-center" cols="auto">
+            <span>
+              <v-icon small left>$html5</v-icon>沪ICP备19021282
+            </span>
+          </v-col>
+          <v-col class="text-center" cols="auto">
+            <span>
+              <v-icon small left>fa-copyright</v-icon>2020-2020 低调
+            </span>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-footer>
   </v-app>
 </template>
 
@@ -101,3 +118,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+footer span {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+</style>

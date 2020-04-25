@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:46:01
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-20 21:35:16
+ * @LastEditTime   : 2020-04-25 14:53:49
  * @Description    : Vuetify Config
  * @GitHub         : https://github.com/yanyongyu
  */
@@ -23,5 +23,8 @@ export default new Vuetify({
   },
   icons: {
     iconfont: "fa",
+    values: {
+      html5: "fab fa-html5",
+    },
   },
 });
