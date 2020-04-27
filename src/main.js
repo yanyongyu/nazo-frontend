@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:34:54
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-21 11:29:05
+ * @LastEditTime   : 2020-04-27 12:09:08
  * @Description    : Entry file
  * @GitHub         : https://github.com/yanyongyu
  */
@@ -13,21 +13,16 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 
 // axios
-import qs from "qs";
+// import qs from "qs";
 import axios from "axios";
 Vue.prototype.$axios = axios;
-axios.defaults.headers["Content-Type"] =
-  "application/x-www-form-urlencoded;charset=UTF-8";
 axios.defaults.timeout = 15000;
 axios.interceptors.request.use(
   (config) => {
-    if (
-      config.headers["Content-Type"] ===
-      "application/x-www-form-urlencoded;charset=UTF-8"
-    ) {
-      config.data = qs.stringify(config.data, {
-        indices: false,
-      });
+    if (store.state.token) {
+      config.headers[
+        "Authorization"
+      ] = `${store.state.tokenType} ${store.state.token}`;
     }
     return config;
   },

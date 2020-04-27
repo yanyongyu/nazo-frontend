@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:47:05
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-21 10:36:50
+ * @LastEditTime   : 2020-04-27 16:45:19
  * @Description    : Vuex
  * @GitHub         : https://github.com/yanyongyu
  */
@@ -14,13 +14,20 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     token: "",
+    tokenType: "",
+    puzzles: [],
+    puzzleIndex: 0,
   },
   mutations: {
-    login(state, token) {
-      state.token = token;
+    login(state, data) {
+      state.token = data.access_token;
+      state.tokenType = data.token_type;
     },
     logout(state) {
       state.token = "";
+      state.tokenType = "";
+      state.puzzles = [];
+      state.puzzleIndex = 0;
     },
   },
   actions: {},

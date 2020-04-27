@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:46:24
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-25 14:40:44
+ * @LastEditTime   : 2020-04-27 12:10:34
  * @Description    : Home
  * @GitHub         : https://github.com/yanyongyu
  -->
@@ -18,6 +18,7 @@
       <v-col class="text-center mb-12">
         <h1 class="mb-3">欢迎来到谜之世界！</h1>
         <p>这是一个极客的世界</p>
+        <p>Tips: 使用电脑闯关效果更佳</p>
         <v-btn class="ma-2 white--text" color="blue-grey" @click="start">
           Get Started
           <v-icon right dark>fa-chevron-right</v-icon>
