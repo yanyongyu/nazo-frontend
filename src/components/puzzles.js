@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-28 11:31:23
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-28 12:39:14
+ * @LastEditTime   : 2020-04-28 16:17:47
  * @Description    : None
  * @GitHub         : https://github.com/yanyongyu
  */
@@ -28,10 +28,10 @@ export default [
   },
   {
     path: "/3",
-    name: "Lv4",
+    name: "Lv3",
     component: () => import(/* webpackChunkName: "puzzles" */ "./Lv3.vue"),
     meta: {
-      title: "白",
+      title: "Lv3 白",
       level: 3,
     },
   },
@@ -40,7 +40,7 @@ export default [
     name: "Lv4",
     component: () => import(/* webpackChunkName: "puzzles" */ "./Lv4.vue"),
     meta: {
-      title: "色彩",
+      title: "Lv4 色彩",
       level: 4,
     },
   },
@@ -49,7 +49,7 @@ export default [
     name: "Lv5",
     component: () => import(/* webpackChunkName: "puzzles" */ "./Lv5.vue"),
     meta: {
-      title: "平平无奇的数学小天才",
+      title: "Lv5 平平无奇的数学小天才",
       level: 5,
     },
   },

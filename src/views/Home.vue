@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:46:24
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-27 12:10:34
+ * @LastEditTime   : 2020-04-28 15:38:29
  * @Description    : Home
  * @GitHub         : https://github.com/yanyongyu
  -->
@@ -19,7 +19,7 @@
         <h1 class="mb-3">欢迎来到谜之世界！</h1>
         <p>这是一个极客的世界</p>
         <p>Tips: 使用电脑闯关效果更佳</p>
-        <v-btn class="ma-2 white--text" color="blue-grey" @click="start">
+        <v-btn class="ma-2 white--text" color="blue-grey" to="/1">
           Get Started
           <v-icon right dark>fa-chevron-right</v-icon>
         </v-btn>
@@ -30,11 +30,6 @@
 
 <script>
 export default {
-  name: "Home",
-  methods: {
-    start: function() {
-      //
-    }
-  }
+  name: "Home"
 };
 </script>

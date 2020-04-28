@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-21 10:43:27
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-28 12:37:06
+ * @LastEditTime   : 2020-04-28 15:49:32
  * @Description    : None
  * @GitHub         : https://github.com/yanyongyu
  -->
@@ -44,7 +44,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary" :loading="loading" :disabled="loading" @click="login">Login</v-btn>
+            <v-btn color="primary" :loading="loading" @click="login">Login</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>

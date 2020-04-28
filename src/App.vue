@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:48:16
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-27 16:50:43
+ * @LastEditTime   : 2020-04-28 16:33:40
  * @Description    : Main Frame
  * @GitHub         : https://github.com/yanyongyu
  -->
@@ -83,6 +83,7 @@
         top
         nudge-bottom="-60"
         nudge-width="500"
+        :close-on-content-click="false"
         transition="slide-y-reverse-transition"
       >
         <template v-slot:activator="{on}">
@@ -94,9 +95,13 @@
           </v-fab-transition>
         </template>
         <v-card class="elevation-12" :loading="loading">
-          <v-card-title>
-            <span class="title">Status</span>
-          </v-card-title>
+          <v-toolbar flat>
+            <v-toolbar-title>Status - {{username}}</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-btn icon @click="throttledRefreshState">
+              <v-icon>fa-sync-alt</v-icon>
+            </v-btn>
+          </v-toolbar>
           <v-divider></v-divider>
           <v-card-text>
             <v-row no-gutters dense>
@@ -136,7 +141,7 @@
                     v-for="(item, index) in status"
                     :key="index"
                     link
-                    :to="item.link"
+                    :to="item.path"
                     :disabled="item.status == 'disabled'"
                   >
                     <v-list-item-icon>
@@ -144,7 +149,7 @@
                       <v-icon small left v-else>$circle</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
-                      <v-list-item-title>{{item.title}}</v-list-item-title>
+                      <v-list-item-title>{{item.meta.title}}</v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
                 </v-list>
@@ -176,6 +181,7 @@
 
 <script>
 import _ from "lodash";
+import Puzzles from "@/components/puzzles.js";
 
 export default {
   name: "App",
@@ -184,27 +190,12 @@ export default {
     drawer: false, // 手机侧边栏
     dashboard: false, // 题目概览
     loading: false,
-    puzzles: [
-      {
-        title: "Lv1",
-        link: "/1"
-      },
-      {
-        title: "Lv2",
-        link: "/2"
-      },
-      {
-        title: "Lv3",
-        link: "/3"
-      },
-      {
-        title: "Lv4",
-        link: "/4"
-      }
-    ], // 题目字典
     rank: ["Loading...", "Loading...", "Loading..."]
   }),
   computed: {
+    username: function() {
+      return this.$store.state.username;
+    },
     token: function() {
       if (this.$store.state.token) {
         _.delay(this.loadUserData, 0);
@@ -214,7 +205,7 @@ export default {
     status: function() {
       var tmp = [];
       var that = this;
-      this.puzzles.forEach((value, index) => {
+      Puzzles.forEach((value, index) => {
         if (that.$store.state.puzzles[index] || false) {
           tmp.push({ status: "passed", ...value });
         } else if (index == that.$store.state.puzzleIndex) {
@@ -226,6 +217,9 @@ export default {
       return tmp;
     }
   },
+  created() {
+    this.throttledRefreshState = _.throttle(this.loadUserData, 3000);
+  },
   methods: {
     logout: function() {
       this.$store.commit("logout");
@@ -233,7 +227,27 @@ export default {
     loadUserData: function() {
       this.dashboard = true;
       this.loading = true;
-      // TODO: get user status and rank
+      this.$axios
+        .get("/api/state")
+        .then(res => {
+          if (res.status == 200) {
+            this.rank = [
+              res.data.rank.first,
+              res.data.rank.second,
+              res.data.rank.third
+            ];
+            this.$store.commit("restoreState", res.data.user);
+          } else {
+            this.$toastr.error("", "加载用户数据失败!");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          this.$toastr.error("", "加载用户数据失败!");
+        })
+        .then(() => {
+          this.loading = false;
+        });
     }
   }
 };
