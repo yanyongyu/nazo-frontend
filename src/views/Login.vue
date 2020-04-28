@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-21 10:43:27
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-27 12:08:30
+ * @LastEditTime   : 2020-04-28 12:37:06
  * @Description    : None
  * @GitHub         : https://github.com/yanyongyu
  -->
@@ -15,7 +15,7 @@
             <v-toolbar-title>Login</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
-            <v-form>
+            <v-form ref="form">
               <v-text-field
                 label="Nickname"
                 name="username"
@@ -54,9 +54,6 @@
 
 <script>
 import qs from "qs";
-import "toastr/build/toastr.css";
-import toastr from "toastr";
-toastr.options.closeButton = true;
 
 export default {
   name: "Login",
@@ -73,6 +70,9 @@ export default {
   }),
   methods: {
     login: function() {
+      if (!this.$refs.form.validate()) {
+        return;
+      }
       this.loading = true;
       this.$axios
         .post(
@@ -95,15 +95,19 @@ export default {
         .then(res => {
           if (res.status === 200) {
             this.$store.commit("login", res.data);
-            toastr.success("", "登录成功！");
-            this.$router.push("/");
+            this.$toastr.success("", "登录成功！");
+            var redirect = this.$route.query.redirect || "/";
+            if (redirect === "/login") {
+              redirect = "/";
+            }
+            this.$router.push(redirect);
           } else {
-            toastr.error(res.data.detail, "登录失败！");
+            this.$toastr.error(res.data.detail, "登录失败！");
           }
         })
         .catch(err => {
           console.log(err);
-          toastr.error("", "登录失败！");
+          this.$toastr.error("", "登录失败！");
         })
         .then(() => {
           this.loading = false;

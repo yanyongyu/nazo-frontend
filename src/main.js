@@ -2,15 +2,21 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:34:54
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-27 12:09:08
+ * @LastEditTime   : 2020-04-28 12:36:41
  * @Description    : Entry file
  * @GitHub         : https://github.com/yanyongyu
  */
 import Vue from "vue";
 import App from "./App.vue";
-import router from "./router";
 import store from "./store";
+import router from "./router";
 import vuetify from "./plugins/vuetify";
+
+// toastr
+import toastr from "toastr";
+import "toastr/build/toastr.css";
+toastr.options.closeButton = true;
+Vue.prototype.$toastr = toastr;
 
 // axios
 // import qs from "qs";
