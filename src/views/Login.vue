@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-21 10:43:27
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-28 15:49:32
+ * @LastEditTime   : 2020-04-29 11:14:44
  * @Description    : None
  * @GitHub         : https://github.com/yanyongyu
  -->
@@ -94,6 +94,7 @@ export default {
         )
         .then(res => {
           if (res.status === 200) {
+            this.$cookies.set("access_token", res.data.access_token, 3600 * 12);
             this.$store.commit("login", res.data);
             this.$toastr.success("", "登录成功！");
             var redirect = this.$route.query.redirect || "/";

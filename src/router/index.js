@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:35:36
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-28 12:29:09
+ * @LastEditTime   : 2020-04-29 14:02:44
  * @Description    : Vue Router
  * @GitHub         : https://github.com/yanyongyu
  */
@@ -28,6 +28,10 @@ const routes = [
   },
 ];
 routes.push(...Puzzles);
+routes.push({
+  path: "*",
+  redirect: "/",
+});
 
 const router = new VueRouter({
   mode: "history",

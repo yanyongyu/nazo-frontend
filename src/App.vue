@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:48:16
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-28 16:33:40
+ * @LastEditTime   : 2020-04-29 13:38:55
  * @Description    : Main Frame
  * @GitHub         : https://github.com/yanyongyu
  -->
@@ -221,7 +221,16 @@ export default {
     this.throttledRefreshState = _.throttle(this.loadUserData, 3000);
   },
   methods: {
+    login: function() {
+      if (this.$cookies.isKey("access_token")) {
+        this.$store.commit("login", {
+          access_token: this.$cookies.get("access_token"),
+          token_type: "Bearer"
+        });
+      }
+    },
     logout: function() {
+      this.$cookies.remove("access_token");
       this.$store.commit("logout");
     },
     loadUserData: function() {
@@ -249,6 +258,9 @@ export default {
           this.loading = false;
         });
     }
+  },
+  mounted() {
+    this.login();
   }
 };
 </script>

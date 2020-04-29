@@ -2,7 +2,7 @@
  * @Author         : huangxiaoyue
  * @Date           : 2020-04-25 16:10:33
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-28 12:35:25
+ * @LastEditTime   : 2020-04-29 14:02:13
  * @Description    : None
  * @GitHub         : https://github.com/yanyongyu
  -->
@@ -34,7 +34,7 @@
               :rules="[rules.required]"
               v-model="answer"
             ></v-text-field>
-            <v-btn color="primary" dark @click="commit">GO</v-btn>
+            <v-btn color="primary" :loading="loading" dark @click="commit">GO</v-btn>
           </v-toolbar>
         </v-form>
       </v-col>
@@ -47,6 +47,7 @@ export default {
   name: "Lv5",
   data: () => ({
     answer: "",
+    loading: false,
     rules: {
       required: value => !!value || "Required."
     }
@@ -54,7 +55,32 @@ export default {
   methods: {
     commit: function() {
       if (this.$refs.form.validate()) {
-        // TODO: commit answer
+        this.loading = true;
+        this.$axios
+          .post("/api/puzzle/5", {
+            answer: this.answer
+          })
+          .then(res => {
+            if (res.status == 200) {
+              if (res.data.passed) {
+                this.$toastr.success("", "恭喜通过Lv.5!");
+                this.$store.commit("passedPuzzle");
+                this.$router.push("/6");
+              } else {
+                this.$toastr.error("", "Ops, 答案错了哦!");
+              }
+            } else {
+              console.log(res.data.detail);
+              this.$toastr.error("", "Ops, 连接出了点意外!");
+            }
+          })
+          .catch(err => {
+            console.log(err);
+            this.$toastr.error("", "Ops, 连接出了点意外!");
+          })
+          .then(() => {
+            this.loading = false;
+          });
       }
     }
   }

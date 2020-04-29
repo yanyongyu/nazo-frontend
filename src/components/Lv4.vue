@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-25 15:10:33
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-28 12:43:57
+ * @LastEditTime   : 2020-04-29 14:00:39
  * @Description    : None
  * @GitHub         : https://github.com/yanyongyu
  -->
@@ -14,11 +14,33 @@
         <h1 class="font-weight-regular">色彩</h1>
       </v-col>
     </v-row>
-    <v-row no-gutters>
-      <v-col class="text-center mb-12">
-        <p class="font-weight-light"></p>
-        <h1 class="mb-3"></h1>
-        <p></p>
+    <v-row no-gutters justify="center">
+      <v-col cols="12" sm="8" md="4" class="text-center mb-12">
+        <h1 class="mb-3">Choose One</h1>
+        <v-row class="mb-2" no-gutters style="height: 100px;">
+          <v-col cols="6">
+            <v-card class="mx-2" color="#8BC34A" height="100" outlined>
+              <v-card-title>Green</v-card-title>
+            </v-card>
+          </v-col>
+          <v-col cols="6">
+            <v-card class="mx-2" color="#8BC34A" height="100" outlined>
+              <v-card-title>Green?</v-card-title>
+            </v-card>
+          </v-col>
+        </v-row>
+        <v-row no-gutters style="height: 100px;">
+          <v-col cols="6">
+            <v-card class="mx-2" color="#8BC34B" height="100" outlined>
+              <v-card-title>May be Green</v-card-title>
+            </v-card>
+          </v-col>
+          <v-col cols="6">
+            <v-card class="mx-2" color="#8BC34A" height="100" outlined>
+              <v-card-title>Yes Green</v-card-title>
+            </v-card>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
     <v-row align="center" justify="center">
@@ -34,7 +56,7 @@
               :rules="[rules.required]"
               v-model="answer"
             ></v-text-field>
-            <v-btn color="primary" dark @click="commit">GO</v-btn>
+            <v-btn color="primary" :loading="loading" dark @click="commit">GO</v-btn>
           </v-toolbar>
         </v-form>
       </v-col>
@@ -47,6 +69,7 @@ export default {
   name: "Lv4",
   data: () => ({
     answer: "",
+    loading: false,
     rules: {
       required: value => !!value || "Required."
     }
@@ -54,7 +77,32 @@ export default {
   methods: {
     commit: function() {
       if (this.$refs.form.validate()) {
-        // TODO: commit answer
+        this.loading = true;
+        this.$axios
+          .post("/api/puzzle/4", {
+            answer: this.answer
+          })
+          .then(res => {
+            if (res.status == 200) {
+              if (res.data.passed) {
+                this.$toastr.success("", "恭喜通过Lv.4!");
+                this.$store.commit("passedPuzzle");
+                this.$router.push("/5");
+              } else {
+                this.$toastr.error("", "Ops, 答案错了哦!");
+              }
+            } else {
+              console.log(res.data.detail);
+              this.$toastr.error("", "Ops, 连接出了点意外!");
+            }
+          })
+          .catch(err => {
+            console.log(err);
+            this.$toastr.error("", "Ops, 连接出了点意外!");
+          })
+          .then(() => {
+            this.loading = false;
+          });
       }
     }
   }

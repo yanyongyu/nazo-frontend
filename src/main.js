@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:34:54
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-28 12:36:41
+ * @LastEditTime   : 2020-04-29 11:12:33
  * @Description    : Entry file
  * @GitHub         : https://github.com/yanyongyu
  */
@@ -17,6 +17,10 @@ import toastr from "toastr";
 import "toastr/build/toastr.css";
 toastr.options.closeButton = true;
 Vue.prototype.$toastr = toastr;
+
+// vue-cookies
+import VueCookies from "vue-cookies";
+Vue.use(VueCookies);
 
 // axios
 // import qs from "qs";

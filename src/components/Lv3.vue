@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-25 15:10:33
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-28 12:43:15
+ * @LastEditTime   : 2020-04-29 13:44:34
  * @Description    : None
  * @GitHub         : https://github.com/yanyongyu
  -->
@@ -15,10 +15,26 @@
       </v-col>
     </v-row>
     <v-row no-gutters>
-      <v-col class="text-center mb-12">
-        <p class="font-weight-light"></p>
-        <h1 class="mb-3"></h1>
-        <p></p>
+      <v-col class="text-center mb-12 white" style="overflow: hidden">
+        <span
+          v-html="'&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;'"
+        ></span>
+        <br />
+        <span
+          v-html="'&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&ensp;'"
+        ></span>
+        <br />
+        <span
+          v-html="'&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;'"
+        ></span>
+        <br />
+        <span
+          v-html="'&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&ensp;'"
+        ></span>
+        <br />
+        <span
+          v-html="'&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;'"
+        ></span>
       </v-col>
     </v-row>
     <v-row align="center" justify="center">
@@ -34,7 +50,7 @@
               :rules="[rules.required]"
               v-model="answer"
             ></v-text-field>
-            <v-btn color="primary" dark @click="commit">GO</v-btn>
+            <v-btn color="primary" :loading="loading" dark @click="commit">GO</v-btn>
           </v-toolbar>
         </v-form>
       </v-col>
@@ -47,6 +63,7 @@ export default {
   name: "Lv3",
   data: () => ({
     answer: "",
+    loading: false,
     rules: {
       required: value => !!value || "Required."
     }
@@ -54,7 +71,32 @@ export default {
   methods: {
     commit: function() {
       if (this.$refs.form.validate()) {
-        // TODO: commit answer
+        this.loading = true;
+        this.$axios
+          .post("/api/puzzle/3", {
+            answer: this.answer
+          })
+          .then(res => {
+            if (res.status == 200) {
+              if (res.data.passed) {
+                this.$toastr.success("", "恭喜通过Lv.3!");
+                this.$store.commit("passedPuzzle");
+                this.$router.push("/4");
+              } else {
+                this.$toastr.error("", "Ops, 答案错了哦!");
+              }
+            } else {
+              console.log(res.data.detail);
+              this.$toastr.error("", "Ops, 连接出了点意外!");
+            }
+          })
+          .catch(err => {
+            console.log(err);
+            this.$toastr.error("", "Ops, 连接出了点意外!");
+          })
+          .then(() => {
+            this.loading = false;
+          });
       }
     }
   }
