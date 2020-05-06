@@ -1,8 +1,8 @@
 <!--
  * @Author         : yanyongyu
- * @Date           : 2020-04-25 15:10:33
+ * @Date           : 2020-04-30 17:55:38
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-30 17:12:52
+ * @LastEditTime   : 2020-05-06 12:41:19
  * @Description    : None
  * @GitHub         : https://github.com/yanyongyu
  -->
@@ -10,37 +10,14 @@
   <v-container class="fill-height align-start">
     <v-row>
       <v-col class="text-center">
-        <p class="font-weight-light">Lv.4</p>
-        <h1 class="font-weight-regular">色彩</h1>
+        <p class="font-weight-light">Lv.9</p>
+        <h1 class="font-weight-regular">域名</h1>
       </v-col>
     </v-row>
-    <v-row no-gutters justify="center">
-      <v-col cols="12" sm="8" md="4" class="text-center mb-12">
-        <h1 class="mb-3">Choose One</h1>
-        <v-row class="mb-2" no-gutters style="height: 100px;">
-          <v-col cols="6">
-            <v-card class="mx-2" color="#F44336" height="100" dark outlined>
-              <v-card-title>Red</v-card-title>
-            </v-card>
-          </v-col>
-          <v-col cols="6">
-            <v-card class="mx-2" color="#F44336" height="100" dark outlined>
-              <v-card-title>Red?</v-card-title>
-            </v-card>
-          </v-col>
-        </v-row>
-        <v-row no-gutters style="height: 100px;">
-          <v-col cols="6">
-            <v-card class="mx-2" color="#F44335" height="100" dark outlined>
-              <v-card-title>May be Red</v-card-title>
-            </v-card>
-          </v-col>
-          <v-col cols="6">
-            <v-card class="mx-2" color="#F44336" height="100" dark outlined>
-              <v-card-title>Yes, Red</v-card-title>
-            </v-card>
-          </v-col>
-        </v-row>
+    <v-row no-gutters>
+      <v-col class="text-center mb-12">
+        <p class="font-weight-light">这似乎是个网址？</p>
+        <h1 class="mb-3">txt.cs181.com.cn</h1>
       </v-col>
     </v-row>
     <v-row align="center" justify="center">
@@ -66,7 +43,7 @@
 
 <script>
 export default {
-  name: "Lv4",
+  name: "Lv9",
   data: () => ({
     answer: "",
     loading: false,
@@ -79,15 +56,15 @@ export default {
       if (this.$refs.form.validate()) {
         this.loading = true;
         this.$axios
-          .post("/api/puzzle/4", {
+          .post("/api/puzzle/9", {
             answer: this.answer
           })
           .then(res => {
             if (res.status == 200) {
               if (res.data.passed) {
-                this.$toastr.success("", "恭喜通过Lv.4!");
+                this.$toastr.success("", "恭喜通过Lv.9!");
                 this.$store.commit("passedPuzzle");
-                this.$router.push("/5");
+                this.$router.push("/10");
               } else {
                 this.$toastr.error("", "Ops, 答案错了哦!");
               }

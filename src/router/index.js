@@ -2,13 +2,14 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:35:36
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-29 14:02:44
+ * @LastEditTime   : 2020-05-06 12:22:12
  * @Description    : Vue Router
  * @GitHub         : https://github.com/yanyongyu
  */
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Rank from "../views/Rank.vue";
 import Login from "../views/Login.vue";
 
 import Puzzles from "../components/puzzles.js";
@@ -20,11 +21,25 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+    meta: {
+      title: "Nazo",
+    },
   },
   {
     path: "/login",
     name: "Login",
     component: Login,
+    meta: {
+      title: "Nazo - 登录",
+    },
+  },
+  {
+    path: "/rank",
+    name: "Rank",
+    component: Rank,
+    meta: {
+      title: "Nazo - 排行",
+    },
   },
 ];
 routes.push(...Puzzles);

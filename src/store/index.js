@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:47:05
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-28 16:35:55
+ * @LastEditTime   : 2020-04-30 16:58:12
  * @Description    : Vuex
  * @GitHub         : https://github.com/yanyongyu
  */
@@ -26,6 +26,7 @@ export default new Vuex.Store({
       state.tokenType = data.token_type;
     },
     logout(state) {
+      state.username = "";
       state.token = "";
       state.tokenType = "";
       state.puzzles.length = 0;

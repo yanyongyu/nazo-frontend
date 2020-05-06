@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:48:16
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-29 13:38:55
+ * @LastEditTime   : 2020-04-30 12:57:51
  * @Description    : Main Frame
  * @GitHub         : https://github.com/yanyongyu
  -->
@@ -118,7 +118,7 @@
                   </v-list-item>
                   <v-list-item>
                     <v-list-item-icon>
-                      <v-icon small left color="gray lighten-1">fa-trophy</v-icon>
+                      <v-icon small left color="grey lighten-1">fa-trophy</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
                       <v-list-item-title>{{rank[1]}}</v-list-item-title>

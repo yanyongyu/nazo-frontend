@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:53:59
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-20 11:53:59
+ * @LastEditTime   : 2020-04-30 13:20:35
  * @Description    : None
  * @GitHub         : https://github.com/yanyongyu
  */
@@ -15,5 +15,5 @@ module.exports = {
   devServer: {
     disableHostCheck: true,
   },
-  transpileDependencies: ["vuetify"],
+  transpileDependencies: ["vuetify", "vue-echarts", "resize-detector"],
 };
