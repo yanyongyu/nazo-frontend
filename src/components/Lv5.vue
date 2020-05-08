@@ -23,7 +23,7 @@
     </v-row>
     <v-row align="center" justify="center">
       <v-col cols="12" sm="8" md="4">
-        <v-form ref="form">
+        <v-form ref="form" @submit.prevent="commit">
           <v-toolbar color="transparent">
             <v-text-field
               class="mr-2"

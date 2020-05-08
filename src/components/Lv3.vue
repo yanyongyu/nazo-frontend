@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-25 15:10:33
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-29 13:44:34
+ * @LastEditTime   : 2020-05-08 13:42:14
  * @Description    : None
  * @GitHub         : https://github.com/yanyongyu
  -->
@@ -17,29 +17,29 @@
     <v-row no-gutters>
       <v-col class="text-center mb-12 white" style="overflow: hidden">
         <span
-          v-html="'&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;'"
+          v-html="'&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwj;&zwj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwj;&zwj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwj;&zwj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;'"
         ></span>
         <br />
         <span
-          v-html="'&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&ensp;'"
+          v-html="'&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwnj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwj;&zwj;'"
         ></span>
         <br />
         <span
-          v-html="'&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;'"
+          v-html="'&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwj;&zwj;'"
         ></span>
         <br />
         <span
-          v-html="'&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&ensp;'"
+          v-html="'&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwnj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwj;&zwj;'"
         ></span>
         <br />
         <span
-          v-html="'&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&ensp;&ensp;&ensp;&emsp;&emsp;&ensp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;'"
+          v-html="'&zwj;&zwj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwj;&zwnj;&zwnj;&zwj;&zwnj;&zwnj;&zwj;&zwj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwj;&zwj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwj;&zwj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwj;&zwj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;&zwnj;'"
         ></span>
       </v-col>
     </v-row>
     <v-row align="center" justify="center">
       <v-col cols="12" sm="8" md="4">
-        <v-form ref="form">
+        <v-form ref="form" @submit.prevent="commit">
           <v-toolbar color="transparent">
             <v-text-field
               class="mr-2"

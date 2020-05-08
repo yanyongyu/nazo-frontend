@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:35:36
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-05-06 12:22:12
+ * @LastEditTime   : 2020-05-08 13:10:19
  * @Description    : Vue Router
  * @GitHub         : https://github.com/yanyongyu
  */
@@ -60,22 +60,21 @@ router.beforeEach((to, from, next) => {
   }
   if (to.matched.some((record) => record.meta.level)) {
     // 判断当前是否登录
-    // if (!router.app.$store.state.token) {
-    //   next({
-    //     path: "/login",
-    //     query: {
-    //       redirect: to.fullPath,
-    //     },
-    //   });
-    // } else if (to.meta.level > router.app.$store.state.puzzleIndex) {
-    //   // 判断当前已通过的关数
-    //   next({
-    //     path: `/${router.app.$store.state.puzzleIndex + 1}`,
-    //   });
-    // } else {
-    //   next();
-    // }
-    next();
+    if (!router.app.$cookies.isKey("access_token")) {
+      next({
+        path: "/login",
+        query: {
+          redirect: to.fullPath,
+        },
+      });
+    } else if (to.meta.level > router.app.$store.state.puzzleIndex + 1) {
+      // 判断当前已通过的关数
+      next({
+        path: `/${router.app.$store.state.puzzleIndex + 1}`,
+      });
+    } else {
+      next();
+    }
   } else {
     next();
   }

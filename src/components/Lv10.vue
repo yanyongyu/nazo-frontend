@@ -2,7 +2,7 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-30 17:55:38
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-05-06 12:49:21
+ * @LastEditTime   : 2020-05-08 13:43:04
  * @Description    : None
  * @GitHub         : https://github.com/yanyongyu
  -->
@@ -21,7 +21,7 @@
     </v-row>
     <v-row align="center" justify="center">
       <v-col cols="12" sm="8" md="4">
-        <v-form ref="form">
+        <v-form ref="form" @submit.prevent="commit">
           <v-toolbar color="transparent">
             <v-text-field
               class="mr-2"

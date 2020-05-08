@@ -2,14 +2,24 @@
  * @Author         : yanyongyu
  * @Date           : 2020-04-20 11:34:54
  * @LastEditors    : yanyongyu
- * @LastEditTime   : 2020-04-29 11:12:33
+ * @LastEditTime   : 2020-05-08 13:10:55
  * @Description    : Entry file
  * @GitHub         : https://github.com/yanyongyu
  */
 import Vue from "vue";
 import App from "./App.vue";
+
+// vue-cookies
+import VueCookies from "vue-cookies";
+Vue.use(VueCookies);
+
+// Vuex
 import store from "./store";
+
+// Vue-Router
 import router from "./router";
+
+// vuetify
 import vuetify from "./plugins/vuetify";
 
 // toastr
@@ -17,10 +27,6 @@ import toastr from "toastr";
 import "toastr/build/toastr.css";
 toastr.options.closeButton = true;
 Vue.prototype.$toastr = toastr;
-
-// vue-cookies
-import VueCookies from "vue-cookies";
-Vue.use(VueCookies);
 
 // axios
 // import qs from "qs";
